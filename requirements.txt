@@ -1,0 +1,8 @@
+smolagents
+litellm
+selenium
+requests
+bs4
+undetected_chromedriver
+pillow
+urllib3

@@ -165,7 +165,7 @@ class Twitterbot:
 model = OpenAIServerModel(
     model_id="gemini-2.0-flash",
     api_base="https://generativelanguage.googleapis.com/v1beta/openai/",
-    api_key="AIzaSyAOeeG15bEPCtSROBqima0J7RYWgv-lGJ8"
+    api_key=os.getenv("GEMINI_API_KEY")
 )
 # Tools
 

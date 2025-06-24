@@ -107,11 +107,4 @@ The system will:
 
 ---
 
-## License
-
-This project is for educational and research purposes only.
-
----
-
-**Author:** [Your Name or Team]  
-**Contact:** [Your Email or GitHub]
+**Author:** Huzaifa Azhar

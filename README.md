@@ -5,13 +5,14 @@ AI Journalist is an intelligent agent system that autonomously discovers, verifi
 ---
 
 ## Features
+The agent can perform the following tasks:
 
-- **Automated News Discovery:** Finds news from trusted sources (BBC, Reuters, CNN, Al Jazeera, Dawn, etc.).
-- **Verification & Summarization:** Uses LLM-powered agents to summarize news in a concise, neutral, and factual manner.
-- **Automated Posting:** Posts updates (including images) to X.com using a Selenium-driven bot.
-- **Community Engagement:** Monitors and interacts with posts from trusted X.com accounts to detect breaking news and trending topics.
+- **Automated News Discovery:** Find news from trusted sources (BBC, Reuters, CNN, Al Jazeera, Dawn, etc.).
+- **Verification & Summarization:** Use LLM-powered agents to summarize news in a concise, neutral, and factual manner.
+- **Automated Posting:** Post updates (including images) to X.com using a Selenium-driven bot.
+- **Community Engagement:** Monitor and interact with posts from trusted X.com accounts to detect breaking news and trending topics.
 - **Image Handling:** Downloads, manages, and attaches relevant images to posts.
-- **Memory Management:** Keeps track of processed news and actions to avoid duplication.
+- **Memory Management:** Keep track of processed news and actions to avoid duplication.
 
 ---
 
@@ -82,6 +83,9 @@ The system will:
 3. Post the update on X.com via the XAgent.
 
 ---
+## Demo Video
+
+https://github.com/user-attachments/assets/d6d8db8c-1dff-4fa6-b0b5-b3619c874bdd
 
 ## Customization
 

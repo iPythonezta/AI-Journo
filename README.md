@@ -85,7 +85,10 @@ The system will:
 ---
 ## Demo Video
 
-https://github.com/user-attachments/assets/d6d8db8c-1dff-4fa6-b0b5-b3619c874bdd
+
+https://github.com/user-attachments/assets/058685e9-0af4-44d5-b7da-bd521f2f2ec9
+
+
 
 ## Customization
 

@@ -1,0 +1,9 @@
+smolagents
+selenium
+undetected-chromedriver
+pywin32
+requests
+beautifulsoup4
+Pillow
+duckduckgo_search
+openai

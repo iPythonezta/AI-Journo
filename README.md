@@ -1,117 +1,228 @@
-# AI Journalist
+# AI-Journo 🤖📰
 
-AI Journalist is an intelligent agent system that autonomously discovers, verifies, summarizes, and posts news updates on X.com (formerly Twitter), focusing on geopolitics, wars, conflicts, and other high-impact global events. It leverages multiple specialized agents and Selenium-based automation to interact with X.com, monitor breaking news, and engage with the online community.
+**AI-Journo** is an intelligent, autonomous journalism system that discovers, verifies, summarizes, and posts breaking news on X.com (formerly Twitter). Built with a multi-agent architecture using Selenium automation and powered by Google's Gemini 2.0 Flash model, it specializes in covering geopolitics, conflicts, wars, and other high-impact global events.
 
----
+[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-## Features
-The agent can perform the following tasks:
+## ✨ Features
 
-- **Automated News Discovery:** Find news from trusted sources (BBC, Reuters, CNN, Al Jazeera, Dawn, etc.).
-- **Verification & Summarization:** Use LLM-powered agents to summarize news in a concise, neutral, and factual manner.
-- **Automated Posting:** Post updates (including images) to X.com using a Selenium-driven bot.
-- **Community Engagement:** Monitor and interact with posts from trusted X.com accounts to detect breaking news and trending topics.
-- **Image Handling:** Downloads, manages, and attaches relevant images to posts.
-- **Memory Management:** Keep track of processed news and actions to avoid duplication.
+### 🔍 **Autonomous News Discovery**
+- Monitors trusted news sources (BBC, Reuters, CNN, Al Jazeera, Dawn)
+- Scrapes homepages and search results for breaking news
+- Tracks trending topics from verified X.com accounts
 
----
+### 🛡️ **Intelligent Verification**
+- Multi-source cross-referencing for fact-checking
+- AI-powered content summarization with Gemini 2.0 Flash
+- Filters out speculation and unverified information
 
-## Project Structure
+### 📝 **Professional Content Creation**
+- Generates concise, neutral summaries optimized for social media
+- Maintains journalistic standards and objectivity
+- Supports image attachments and media handling
+
+### 🚀 **Automated X.com Management**
+- Selenium-based browser automation for posting
+- Cookie-based session management for persistent login
+- Account engagement features (following, searching, monitoring)
+
+### 🧠 **Memory Management**
+- Tracks processed stories to avoid duplication
+- Maintains context across sessions
+- Persistent memory for agent coordination
+
+## 🏗️ Architecture
+
+AI-Journo uses a sophisticated multi-agent system with specialized roles:
 
 ```
-AI Journalist/
-│
-├── main.py
-├── requirements.txt
-├── .env
-├── .gitignore
-├── main_prompt.txt
-├── writer_prompt.txt
-├── x_agent_prompt.txt
-├── research_agent_prompt.txt
-├── README.md
-├── cookies/           # Stores login cookies for X.com sessions
-└── images/            # Stores images for posting
+┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+│   MainAgent     │    │ ResearchAgent   │    │  WriterAgent    │
+│                 │    │                 │    │                 │
+│ • Orchestrates  │◄──►│ • News discovery│◄──►│ • Content       │
+│ • Memory mgmt   │    │ • Verification  │    │   creation      │
+│ • Coordination  │    │ • Source checks │    │ • Summarization │
+└─────────────────┘    └─────────────────┘    └─────────────────┘
+          │                                             │
+          ▼                                             ▼
+┌─────────────────┐                          ┌─────────────────┐
+│    XAgent       │                          │   Tools Suite   │
+│                 │                          │                 │
+│ • X.com posting │                          │ • Web scraping  │
+│ • Account mgmt  │                          │ • Image handling│
+│ • Monitoring    │                          │ • API calls     │
+└─────────────────┘                          └─────────────────┘
 ```
 
----
+### 🤖 **Agent Roles**
 
-## Agents
+- **MainAgent**: Central coordinator managing workflow, memory, and agent communication
+- **ResearchAgent**: Discovers and verifies news from trusted sources
+- **WriterAgent**: Creates optimized social media content from research summaries  
+- **XAgent**: Handles all X.com interactions via Selenium automation
 
-- **MainAgent:** Orchestrates the workflow, manages memory, and coordinates sub-agents.
-- **ResearchAgent:** Discovers and verifies news stories from credible sources.
-- **WriterAgent:** Summarizes news for X.com posts, ensuring clarity and brevity.
-- **XAgent:** Handles all X.com interactions (login, posting, searching, following, etc.) via the `Twitterbot` class.
+## 🚀 Quick Start
 
----
+### Installation
 
-## Setup
+```bash
+# Install from PyPI (when published)
+pip install xnewsbot
 
-1. **Clone the repository** and navigate to the project directory.
-
-2. **Install dependencies:**
-   ```sh
-   pip install -r requirements.txt
-   ```
-
-3. **Configure API Keys:**
-   - Create a `.env` file with your Gemini API key:
-     ```
-     GEMINI_API_KEY=your_gemini_api_key_here
-     ```
-
-4. **Prepare Images (Optional):**
-   - Place any images you want to use for posts in the `images/` directory.
-
----
-
-## Usage
-
-Run the main script:
-
-```sh
-python main.py
+# Or install from source
+git clone https://github.com/iPythonezta/AI-Journo.git
+cd AI-Journo
+pip install -e .
 ```
 
-You will be prompted for:
-- Your X.com username/email and password (used for Selenium login).
-- A prompt describing the news task or event to cover.
+### Basic Usage
 
-The system will:
-1. Use the ResearchAgent to gather and verify news.
-2. Summarize the news using the WriterAgent.
-3. Post the update on X.com via the XAgent.
+```python
+from xnewsbot import AIJourno
 
+# Initialize with your credentials
+journo = AIJourno(
+    x_username="your_username",
+    x_password="your_password", 
+    api_key="your_gemini_api_key"
+)
+
+# Run a specific task
+journo.run("Find and post latest news about Middle East conflicts")
+
+# Monitor breaking news
+journo.run("Monitor trending topics and post updates on significant developments")
+```
+
+### Environment Setup
+
+1. **Get Gemini API Key**: Visit [Google AI Studio](https://aistudio.google.com/) to get your API key
+2. **Install Chrome**: Required for Selenium automation
+3. **Create directories**: The system will create `images/` and `cookies/` folders automatically
+
+## 📋 Requirements
+
+- **Python 3.8+**
+- **Google Chrome** (for Selenium automation)
+- **Gemini API Key** (for AI processing)
+
+### Dependencies
+
+```
+smolagents>=0.3.0
+litellm>=1.0.0  
+selenium>=4.0.0
+requests>=2.25.0
+beautifulsoup4>=4.9.0
+undetected_chromedriver>=3.4.0
+pillow>=8.0.0
+urllib3>=1.26.0
+```
+
+## 🔧 Configuration
+
+### Supported News Sources
+
+- **BBC News** (`https://www.bbc.com/`)
+- **Dawn** (`https://www.dawn.com/`)
+- **Al Jazeera** (`https://www.aljazeera.com/`)
+- **Reuters, CNN** (via web scraping)
+
+### X.com Account Monitoring
+
+The system can monitor trusted accounts for breaking news:
+- `@warmonitors`
+- `@sentdefender` 
+- `@jacksonhinkle`
+- Custom account lists
+
+## 🛠️ Advanced Usage
+
+### Custom Research Tasks
+
+```python
+# Research specific topics
+journo.run("Research and verify reports about recent developments in Ukraine")
+
+# Monitor specific regions
+journo.run("Find breaking news from Middle East sources and create summary post")
+```
+
+### Image Handling
+
+```python
+# The system automatically handles images
+# Images are stored in xnewsbot/images/ directory
+# Supports JPEG, PNG formats
+# Automatic image attachment to posts
+```
+
+### Memory Management
+
+```python
+# Memory is automatically managed
+# Prevents duplicate story processing
+# Maintains context across sessions
+# Can be cleared manually if needed
+```
+
+## 📁 Project Structure
+
+```
+AI-Journo/
+├── xnewsbot/
+│   ├── __init__.py          # Package initialization
+│   ├── ai_journo.py         # Main AIJourno class
+│   ├── agents.py            # Multi-agent system setup
+│   ├── tools.py             # Specialized tools and utilities
+│   ├── twitterbot.py        # Selenium X.com automation
+│   ├── prompts/             # AI agent prompts
+│   │   ├── main_prompt.txt
+│   │   ├── research_agent_prompt.txt
+│   │   ├── writer_prompt.txt
+│   │   └── x_agent_prompt.txt
+│   └── images/              # Media storage
+├── requirements.txt         # Dependencies
+├── setup.py                # Package configuration
+└── README.md               # This file
+```
+
+## 🔒 Security & Privacy
+
+- **Local Processing**: All automation runs locally on your machine
+- **Credential Management**: Secure session handling with cookie storage
+- **Rate Limiting**: Built-in delays to respect platform limits
+- **No Data Collection**: No user data is transmitted to external services (except API calls)
+
+## ⚠️ Important Notes
+
+### Rate Limiting
+The system includes built-in rate limiting to respect:
+- X.com API limits and platform policies
+- News source scraping guidelines  
+- Gemini API quotas (5 requests per minute)
+
+### Responsible Use
+- **Verify Information**: Always cross-check important news before posting
+- **Respect Sources**: Follow news website terms of service
+- **Platform Compliance**: Ensure X.com account follows platform guidelines
+- **Ethical Journalism**: Maintain objectivity and factual accuracy
+
+### Legal Compliance
+- Use only for legitimate journalism and news sharing
+- Respect copyright and fair use policies
+- Follow local laws regarding automated social media activity
+
+## 📜 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🆘 Support
+
+For support, questions, or feature requests:
+- **Issues**: [GitHub Issues](https://github.com/iPythonezta/AI-Journo/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/iPythonezta/AI-Journo/discussions)
 ---
-## Demo Video
 
-
-https://github.com/user-attachments/assets/058685e9-0af4-44d5-b7da-bd521f2f2ec9
-
-
-
-## Customization
-
-- **Prompts:** Modify the `.txt` prompt files to adjust agent behavior and instructions.
-- **Agent Logic:** Extend or modify `main.py` to add new tools, sources, or behaviors.
-- **Image Handling:** Add images to the `images/` directory for use in posts.
-
----
-
-## Security & Privacy
-
-- User credentials are used only for browser automation and are not stored.
-- Cookies are saved in the `cookies/` directory for session reuse.
-- Do **not** share your `.env` or `cookies/` files publicly.
-
----
-
-## Requirements
-
-- Python 3.11 (Might be compatible with other versions but I haven't tested it)
-- Google Chrome browser (for Selenium)
-- See `requirements.txt` for Python dependencies.
-
----
-
-**Author:** Huzaifa Azhar
+**⚡ Built for the future of automated journalism - AI-Journo helps you stay informed and share breaking news responsibly.**

@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="xnewsbot",
-    version="0.2.0",
+    version="0.6.0",
     description="AI-powered news bot for X.com (Twitter) automation with research and writing capabilities.",
     author="Huzaifa Azhar",
     author_email="huzaifablogger.contact@gmail.com",
@@ -14,7 +14,7 @@ setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     package_data={
-        'xnewsbot': ['prompts/*.txt', 'images/*'],
+        'xnewsbot': ['prompts/*.txt', 'images/*', 'cookies/*'],
     },
     install_requires=[
         "smolagents",
@@ -26,6 +26,7 @@ setup(
         "Pillow",  # PIL
         "duckduckgo_search",
         "openai",
+        "markdownify"
     ],
     python_requires='>=3.8',
     classifiers=[

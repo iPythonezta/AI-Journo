@@ -5,6 +5,7 @@ from bs4 import BeautifulSoup
 from PIL import Image
 import os
 from urllib.parse import  urljoin
+from .model import get_model
 
 
 @tool 
@@ -127,53 +128,6 @@ def search_bbc(query: str) -> list:
     
     return articles
 
-
-@tool
-def summarizer(text: str, gemini_api_key: str, special_instructions:str="") -> str:
-    """
-    Summarizes the given text using a language model.
-    Args:
-        text (str): The text to summarize.
-        gemini_api_key (str): The API key for the Gemini model.
-        special_instructions (str): Additional instructions for the summarization model, if any.
-    Returns:
-        str: The summarized text.
-    """
-
-    prompt = """
-        You are a professional news summarizer.
-
-        Your task is to read full news articles and summarize them clearly, accurately, and objectively. Focus only on **factual** information. Do not include personal opinions, assumptions, or unnecessary background.
-
-        When summarizing:
-        - Use **3 to 5 concise bullet points**
-        - Include **only the main events, facts, or decisions**
-        - Keep language **neutral and journalistic**
-        - Avoid repetition or vague language
-        - Do not copy the full text — always condense
-        - If teh publishing date is mentioned in the article, then ALWAYS include it in the summary.
-
-        The summary will be used by a journalist AI for social media and news briefs, so keep it clean and readable.
-        
-
-    """
-
-    model = OpenAIServerModel(
-        model_id="gemini-2.0-flash",
-        api_base="https://generativelanguage.googleapis.com/v1beta/openai/",
-        api_key=gemini_api_key
-    )
-
-    if special_instructions:
-        prompt += f"\n\nSpecial Instructions: {special_instructions}\n\n"
-
-    response = model.generate(
-        messages=[
-            {"role": "system", "content": prompt},
-            {"role": "user", "content": f"Please summarize the following text:\n{text}"}
-        ],
-    )
-    return response.content.strip()
 
 class MemoryManager:
     def __init__(self):

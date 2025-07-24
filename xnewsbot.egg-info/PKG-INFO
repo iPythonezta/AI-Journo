@@ -1,6 +1,6 @@
 Metadata-Version: 2.4
 Name: xnewsbot
-Version: 0.2.0
+Version: 0.6.0
 Summary: AI-powered news bot for X.com (Twitter) automation with research and writing capabilities.
 Author: Huzaifa Azhar
 Author-email: huzaifablogger.contact@gmail.com
@@ -28,6 +28,7 @@ Requires-Dist: beautifulsoup4
 Requires-Dist: Pillow
 Requires-Dist: duckduckgo_search
 Requires-Dist: openai
+Requires-Dist: markdownify
 Dynamic: author
 Dynamic: author-email
 Dynamic: classifier

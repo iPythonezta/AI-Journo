@@ -85,7 +85,7 @@ from xnewsbot import AIJourno
 journo = AIJourno(
     x_username="your_username",
     x_password="your_password", 
-    api_key="your_gemini_api_key"
+    api_key="your_gemini_api_key" # For testing feel free to use this key: AIzaSyA5vhExzxWIgGGCsP2tZzgCrhLeMJPnGAQ
 )
 
 # Run a specific task

@@ -69,7 +69,8 @@ AI-Journo uses a sophisticated multi-agent system with specialized roles:
 ```bash
 # Install from PyPI (when published)
 pip install xnewsbot
-
+# If you face the Module Not Found error (distutils), try running: 
+pip install --upgrade setuptools
 # Or install from source
 git clone https://github.com/iPythonezta/AI-Journo.git
 cd AI-Journo
@@ -82,6 +83,7 @@ pip install -e .
 from xnewsbot import AIJourno
 
 # Initialize with your credentials
+# For tes
 journo = AIJourno(
     x_username="your_username",
     x_password="your_password", 
